@@ -4,43 +4,44 @@ const employeesArray = [];
 
 // Collect employee data
 const collectEmployees = function() {
-  let continueAdding = true;
-  while (continueAdding) {
-    const firstName = prompt("Enter employee's first name:");
-    const lastName = prompt("Enter employee's last name:");
-    const salary = parseFloat(prompt("Enter employee's salary:"));
+  let continueAdding = true; // Initialize a flag to control the loop
+  while (continueAdding) { // Start a loop that continues as long as continueAdding is true
+    const firstName = prompt("Enter employee's first name:"); // Prompt the user to input the first name
+    const lastName = prompt("Enter employee's last name:"); // Prompt the user to input the last name
+    const salary = parseFloat(prompt("Enter employee's salary:")); // Prompt the user to input the salary and convert it to a floating-point number
 
-    const employee = {
-      firstName: firstName,
-      lastName: lastName,
-      salary: salary
+    const employee = { // Create an object representing the employee
+      firstName: firstName, // Assign the inputted first name to the firstName property of the employee object
+      lastName: lastName, // Assign the inputted last name to the lastName property of the employee object
+      salary: salary // Assign the inputted salary to the salary property of the employee object
     };
 
-    employeesArray.push(employee);
+    employeesArray.push(employee); // Add the employee object to the employeesArray
 
-    const continueInput = prompt("Do you want to add another employee? (yes/no)").toLowerCase();
-    if (continueInput !== "yes") {
-      continueAdding = false;
+    const continueInput = prompt("Do you want to add another employee? (yes/no)").toLowerCase(); // Prompt the user whether to continue adding employees and convert the input to lowercase
+    if (continueInput !== "yes") { // Check if the input is not 'yes'
+      continueAdding = false; // Set continueAdding to false to exit the loop
     }
   }
-  return employeesArray;
+  return employeesArray; // Return the array of collected employee objects
 }
 
 
 // Display the average salary
 const displayAverageSalary = function(employeesArray) {
-  const totalSalary = employeesArray.reduce((acc, employee) => acc + employee.salary, 0);
-  const averageSalary = totalSalary / employeesArray.length;
-  console.log('Average Salary:', averageSalary.toLocaleString("en-US", { style: "currency", currency: "USD" }));
+  const totalSalary = employeesArray.reduce((acc, employee) => acc + employee.salary, 0); // Calculate the total salary by summing up the salary of each employee in the array
+  const averageSalary = totalSalary / employeesArray.length; // Calculate the average salary by dividing the total salary by the number of employees
+  console.log('Average Salary:', averageSalary.toLocaleString("en-US", { style: "currency", currency: "USD" })); // Log the average salary to the console in USD currency format
 }
 
 
 // Select a random employee
 const getRandomEmployee = function(employeesArray) {
-  const randomIndex = Math.floor(Math.random() * employeesArray.length);
-  const randomEmployee = employeesArray[randomIndex];
-  console.log('Random Employee:', randomEmployee);
+  const randomIndex = Math.floor(Math.random() * employeesArray.length); // Generate a random index within the range of the employeesArray
+  const randomEmployee = employeesArray[randomIndex]; // Get a random employee from the employeesArray using the generated random index
+  console.log('Random Employee:', randomEmployee); // Log the randomly selected employee to the console
 }
+
 
 /*
   ====================
